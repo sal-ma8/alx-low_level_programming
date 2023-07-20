@@ -17,7 +17,7 @@ int op_add(int a, int b)
 	return (a + b);
 }
 /**
- * op_sub - 	qw
+ * op_sub - qw
  * @a: vp1
  * @b: vp2
  * Return: asd
