@@ -73,8 +73,8 @@ int main(int argc, char *argv[])
 			free(bfff);
 			exit(98);
 		}
+		g = write(ni, bfff, ta);
 
-		g = write(ni, bfff,ta);
 		if (ni == -1 || g == -1)
 		{
 			dprintf(STDERR_FILENO,
