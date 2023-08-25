@@ -16,40 +16,41 @@ void print_type(unsigned int e_type, unsigned char *e_ident);
 void print_entry(unsigned long int e_entry, unsigned char *e_ident);
 void close_elf(int elf);
 /**
- * check_elf - waz1
+ * check_elf - wa1.
  * @e_ident: vp1
  */
 void check_elf(unsigned char *e_ident)
 {
-	int salh;
+	int index;
 
-	for (salh = 0; salh < 4; salh++)
+	for (index = 0; index < 4; index++)
 	{
-		if (e_ident[salh] != 127 &&
-		    e_ident[salh] != 'E' &&
-		    e_ident[salh] != 'L' &&
-		    e_ident[salh] != 'F')
+		if (e_ident[index] != 127 &&
+		    e_ident[index] != 'E' &&
+		    e_ident[index] != 'L' &&
+		    e_ident[index] != 'F')
 		{
 			dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
 			exit(98);
 		}
 	}
 }
+
 /**
- * print_magic - waz2
+ * print_magic - wa1
  * @e_ident: vp1
  */
 void print_magic(unsigned char *e_ident)
 {
-	int hm;
+	int index;
 
 	printf("  Magic:   ");
 
-	for (hm = 0; hm < EI_NIDENT; hm++)
+	for (index = 0; index < EI_NIDENT; index++)
 	{
-		printf("%02x", e_ident[hm]);
+		printf("%02x", e_ident[index]);
 
-		if (hm == EI_NIDENT - 1)
+		if (index == EI_NIDENT - 1)
 			printf("\n");
 		else
 			printf(" ");
@@ -57,12 +58,12 @@ void print_magic(unsigned char *e_ident)
 }
 
 /**
- * print_class - wz3
- * @e_ident: vp
+ * print_class - wa3
+ * @e_ident: vp3
  */
 void print_class(unsigned char *e_ident)
 {
-	printf("  Class:                            ");
+	printf("  Class:                             ");
 
 	switch (e_ident[EI_CLASS])
 	{
@@ -81,12 +82,12 @@ void print_class(unsigned char *e_ident)
 }
 
 /**
- * print_data - wz1
- * @e_ident: vp1
+ * print_data - wa
+ * @e_ident:vp
  */
 void print_data(unsigned char *e_ident)
 {
-	printf("  Data:                             ");
+	printf("  Data:                              ");
 
 	switch (e_ident[EI_DATA])
 	{
@@ -105,8 +106,8 @@ void print_data(unsigned char *e_ident)
 }
 
 /**
- * print_version - sa
- * @e_ident: vp
+ * print_version - wag
+ * @e_ident: vpw
  */
 void print_version(unsigned char *e_ident)
 {
@@ -123,10 +124,9 @@ void print_version(unsigned char *e_ident)
 		break;
 	}
 }
-
 /**
- * print_osabi - sao
- * @e_ident: vp3
+ * print_osabi - wa
+ * @e_ident: vp
  */
 void print_osabi(unsigned char *e_ident)
 {
@@ -170,8 +170,8 @@ void print_osabi(unsigned char *e_ident)
 }
 
 /**
- * print_abi - wa
- * @e_ident: vp
+ * print_abi -df.
+ * @e_ident: yu
  */
 void print_abi(unsigned char *e_ident)
 {
@@ -180,9 +180,9 @@ void print_abi(unsigned char *e_ident)
 }
 
 /**
- * print_type - waz
- * @e_type: vp0
- * @e_ident: vp
+ * print_type - iuk
+ * @e_type: Thkj
+ * @e_ident: ghjk
  */
 void print_type(unsigned int e_type, unsigned char *e_ident)
 {
@@ -214,9 +214,9 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
 }
 
 /**
- * print_entry - waz
- * @e_entry: vp2
- * @e_ident: vp1
+ * print_entry - hjmj
+ * @e_entry: hjm
+ * @e_ident: jhm
  */
 void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 {
@@ -237,8 +237,8 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 }
 
 /**
- * close_elf - sa
- * @elf: vp
+ * close_elf - hjm
+ * @elf: Tmhj
  */
 void close_elf(int elf)
 {
@@ -251,18 +251,18 @@ void close_elf(int elf)
 }
 
 /**
- * main - sa
- * @argc:vp1
- * @argv: vp2
- * Return: asdfg
+ * main - jyhgj
+ * @argc: bhjk
+ * @argv: hcgj
+ * Return: 0 on success.
  */
 int main(int __attribute__((__unused__)) argc, char *argv[])
 {
 	Elf64_Ehdr *header;
-	int h, r;
+	int o, r;
 
-	h = open(argv[1], O_RDONLY);
-	if (h == -1)
+	o = open(argv[1], O_RDONLY);
+	if (o == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
 		exit(98);
@@ -270,15 +270,15 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	header = malloc(sizeof(Elf64_Ehdr));
 	if (header == NULL)
 	{
-		close_elf(h);
+		close_elf(o);
 		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
 		exit(98);
 	}
-	r = read(h, header, sizeof(Elf64_Ehdr));
+	r = read(o, header, sizeof(Elf64_Ehdr));
 	if (r == -1)
 	{
 		free(header);
-		close_elf(h);
+		close_elf(o);
 		dprintf(STDERR_FILENO, "Error: `%s`: No such file\n", argv[1]);
 		exit(98);
 	}
@@ -295,6 +295,6 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	print_entry(header->e_entry, header->e_ident);
 
 	free(header);
-	close_elf(h);
+	close_elf(o);
 	return (0);
 }
