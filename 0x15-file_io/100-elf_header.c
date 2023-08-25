@@ -1,6 +1,5 @@
 /*
- * File: 100-elf_header.c
- * Auth: Brennan D Baraban
+ * salma helal 
  */
 
 #include <elf.h>
@@ -23,21 +22,19 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident);
 void close_elf(int elf);
 
 /**
- * check_elf - Checks if a file is an ELF file.
- * @e_ident: A pointer to an array containing the ELF magic numbers.
- *
- * Description: If the file is not an ELF file - exit code 98.
+ * check_elf - waz1
+ * @e_ident: vp1
  */
 void check_elf(unsigned char *e_ident)
 {
-	int index;
+	int salh;
 
-	for (index = 0; index < 4; index++)
+	for (salh = 0; salh < 4; salh++)
 	{
-		if (e_ident[index] != 127 &&
-		    e_ident[index] != 'E' &&
-		    e_ident[index] != 'L' &&
-		    e_ident[index] != 'F')
+		if (e_ident[salh] != 127 &&
+		    e_ident[salh] != 'E' &&
+		    e_ident[salh] != 'L' &&
+		    e_ident[salh] != 'F')
 		{
 			dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
 			exit(98);
@@ -46,10 +43,8 @@ void check_elf(unsigned char *e_ident)
 }
 
 /**
- * print_magic - Prints the magic numbers of an ELF header.
- * @e_ident: A pointer to an array containing the ELF magic numbers.
- *
- * Description: Magic numbers are separated by spaces.
+ * print_magic - waz2
+ * @e_ident: vp1
  */
 void print_magic(unsigned char *e_ident)
 {
