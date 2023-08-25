@@ -1,10 +1,9 @@
-
+#include <elf.h>
 #include <sys/types.h>
 #include <unistd.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdlib.h>
-#include <elf.h>
 #include <stdio.h>
 
 void print_entry(unsigned long int e_entry, unsigned char *mu);
