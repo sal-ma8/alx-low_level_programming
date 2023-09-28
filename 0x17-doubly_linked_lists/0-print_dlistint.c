@@ -1,24 +1,26 @@
-#include <stdio.h>
 #include "lists.h"
 
 /**
- * print_list - cndjfh djdv 
+ * print_dlistint - vjihdrqvr gsdw
  * @h: vp1
- * Return: jdfjdjc
+ * Return: dfad dsf
  */
-size_t print_list(const list_t *h)
+size_t print_dlistint(const dlistint_t *h)
 {
- size_t sal = 0;
+	int ed = 0;
 
- while (h)
- {
- if (!h->str)
- printf("[0] (nil)\n");
- else
- printf("[%u] %s\n", h->len, h->str);
- h = h->next;
- sal++;
- }
+	if (h == NULL)
+		return (ed);
 
- return (sal);
+	while (h->prev != NULL)
+		h = h->prev;
+
+	while (h != NULL)
+	{
+		printf("%d\n", h->n);
+		ed++;
+		h = h->next;
+	}
+
+	return (ed);
 }
